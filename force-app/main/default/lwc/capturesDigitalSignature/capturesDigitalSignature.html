@@ -1,0 +1,40 @@
+<template>
+    <lightning-card variant="Narrow" title="Signature">
+        <div class="slds-p-around_medium">
+
+            <!-- Contact Name -->
+            <template if:true={contactName}>
+                <p class="slds-text-heading_small slds-m-bottom_small" style="font-weight:600;">
+                    <span style="color: blue; font-style: italic; font-weight: bold;">{contactName}</span>'s Signature
+                </p>
+            </template>
+
+            <!-- Instruction -->
+            <p class="slds-text-body_regular"
+               style="font-style: italic; font-weight: bold; font-size: 14px; margin-bottom: .5rem;">
+                Use your mouse (or finger on touch devices) to draw a signature
+            </p>
+
+            <!-- Signature Pad -->
+            <div class="canvas-container"
+                 style="border: 3px solid blue; border-radius: 6px; padding: 4px; background-color: white; width: fit-content;">
+                <canvas class="signature-pad" lwc:dom="manual"
+                        style="background: #fff; width: 500px; height: 150px; cursor: crosshair;">
+                </canvas>
+            </div>
+
+            <!-- Error -->
+            <template if:true={showError}>
+                <div class="slds-text-body_regular"
+                     style="color: red; font-style: italic; font-weight: bold; font-size: 14px; margin-top: .5rem;">
+                    Please provide your signature before continuing
+                </div>
+            </template>
+
+            <!-- Loading hint -->
+            <template if:true={showLoading}>
+                <div class="slds-m-top_small slds-text-color_weak">Saving signature…</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
